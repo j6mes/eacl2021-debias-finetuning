@@ -1,0 +1,4 @@
+allennlp==0.9.1.dev20200327
+fever-drqa
+fever-scorer
+transformers==2.4.1
