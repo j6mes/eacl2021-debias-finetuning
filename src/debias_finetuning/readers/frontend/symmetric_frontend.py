@@ -1,6 +1,7 @@
 import json
 
 from debias_finetuning.readers.frontend.frontend_reader import FrontEndReader
+from debias_finetuning.readers.preprocessing import unpreprocess
 
 
 @FrontEndReader.register("symmetric")
@@ -16,4 +17,9 @@ class SymmetricFrontEndReader(FrontEndReader):
             evidence = example["evidence"]
             claim = example["claim"]
 
-            yield self.text_to_instance(unpreprocess(evidence), claim, label)
+            yield {
+                "sentence1": claim,
+                "sentence2": unpreprocess(evidence),
+                "label": label
+            }
+

@@ -81,7 +81,7 @@
         "batch_sampler": {
             "type": "bucket",
             "batch_size": 64,
-            "sorting_keys": ["claim","evidence"],
+            "sorting_keys": ["hypothesis","premise"],
         }
     },
 

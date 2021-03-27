@@ -2,23 +2,20 @@
   "dataset_reader": {
     "type": "debias_finetuning_classic",
     "token_indexers": {
-      "elmo": {
-        "type": "elmo_characters"
-     }
+      "tokens": {
+        "type": "single_id",
+        "lowercase_tokens": true
+      }
     },
     "tokenizer": {
       "type":"spacy",
     },
-    "frontend_reader": "fever",
-      "frontend_args": {
-        "database": "resources/wikipedia/fever.db",
-        "format_evidence":false
-      }
+    "frontend_reader": "snli",
   },
-  "train_data_path": "resources/fever/negative_sampled_evidence/train.ns.pages.p1.jsonl",
-  "validation_data_path": "resources/fever/negative_sampled_evidence/dev.ns.pages.p1.jsonl",
+  "train_data_path": "resources/stress_tests/numerical_reasoning/multinli_0.9_numerical_reasoning_matched.jsonl",
+  "test_data_path": "resources/multinli_1.0/multinli_1.0_dev_matched.jsonl",
   "model": {
-    "type": "esim_wrap",
+    "type": "esim",
     "dropout": 0.5,
     "text_field_embedder": {
         "token_embedders": {
@@ -88,14 +85,13 @@
     },
 
   "trainer": {
-    "num_epochs": 75,
+    "num_epochs": 10,
     "checkpointer": {
         "num_serialized_models_to_keep": 2,
     },
     "patience":10,
     "cuda_device": 0,
     "grad_norm": 10.0,
-    "validation_metric": "+accuracy",
     "optimizer": {
       "type": "adam",
       "lr": 0.0004

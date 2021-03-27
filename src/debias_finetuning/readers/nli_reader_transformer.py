@@ -35,7 +35,7 @@ class FineTuningNLIReaderTransformer(DatasetReader):
                  tokenizer: Tokenizer = None,
                  token_indexers: Dict[str, TokenIndexer] = None,
                  frontend_reader:str = None,
-                 frontend_args: Dict[str, Any] = None,
+                 frontend_args: Dict[str, Any] = {},
                  lazy: bool = False,
                  concatenate_instances: str = None,
                  concatenate_frontend_reader: str = None,

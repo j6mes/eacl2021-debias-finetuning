@@ -9,16 +9,12 @@
     "tokenizer": {
       "type":"spacy",
     },
-    "frontend_reader": "fever",
-      "frontend_args": {
-        "database": "resources/wikipedia/fever.db",
-        "format_evidence":false
-      }
+    "frontend_reader": "symmetric"
   },
-  "train_data_path": "resources/fever/negative_sampled_evidence/train.ns.pages.p1.jsonl",
-  "validation_data_path": "resources/fever/negative_sampled_evidence/dev.ns.pages.p1.jsonl",
+  "train_data_path": "resources/symmetric/fever_symmetric_dev.jsonl",
+  "validation_data_path": "resources/symmetric/fever_symmetric_test.jsonl",
   "model": {
-    "type": "esim_wrap",
+    "type": "esim",
     "dropout": 0.5,
     "text_field_embedder": {
         "token_embedders": {

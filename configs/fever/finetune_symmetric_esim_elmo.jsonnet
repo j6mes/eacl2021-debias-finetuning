@@ -9,16 +9,29 @@
     "tokenizer": {
       "type":"spacy",
     },
+    "frontend_reader": "symmetric"
+  },
+  "validation_dataset_reader": {
+    "type": "debias_finetuning_classic",
+    "token_indexers": {
+      "tokens": {
+        "type": "single_id",
+        "lowercase_tokens": true
+      }
+    },
+    "tokenizer": {
+      "type":"spacy",
+    },
     "frontend_reader": "fever",
       "frontend_args": {
         "database": "resources/wikipedia/fever.db",
         "format_evidence":false
       }
   },
-  "train_data_path": "resources/fever/negative_sampled_evidence/train.ns.pages.p1.jsonl",
-  "validation_data_path": "resources/fever/negative_sampled_evidence/dev.ns.pages.p1.jsonl",
+  "train_data_path": "resources/symmetric/fever_symmetric_dev.jsonl",
+  "test_data_path": "resources/fever/negative_sampled_evidence/dev.ns.pages.p1.jsonl",
   "model": {
-    "type": "esim_wrap",
+    "type": "esim",
     "dropout": 0.5,
     "text_field_embedder": {
         "token_embedders": {
@@ -95,7 +108,6 @@
     "patience":10,
     "cuda_device": 0,
     "grad_norm": 10.0,
-    "validation_metric": "+accuracy",
     "optimizer": {
       "type": "adam",
       "lr": 0.0004
