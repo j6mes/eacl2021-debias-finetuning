@@ -1,15 +1,16 @@
+###
+# This code is based on a EWC repo made publicly available on GitHub by @moskomule
+# https://github.com/moskomule/ewc.pytorch
+###
+
 from copy import deepcopy
-from typing import Dict, Any
 import logging
 import torch
 from allennlp.data import DataLoader
 from allennlp.nn.util import get_device_of, move_to_device
-from allennlp.training import EpochCallback, GradientDescentTrainer
 from torch import nn
 from tqdm import tqdm
-from torch.autograd import Variable
 import torch.utils.data
-
 from debias_finetuning.losses.util import variable
 
 logger = logging.getLogger()
